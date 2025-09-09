@@ -27,8 +27,11 @@ const ImageGallery: React.FC = () => {
 
   const downloadImage = async (src: string, filename: string) => {
     try {
-      const response = await fetch(src);
+      // If your file names contain spaces or special chars, encode the URL:
+      const response = await fetch(encodeURI(src));
+      if (!response.ok) throw new Error(`Failed to fetch ${src}`);
       const blob = await response.blob();
+
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
@@ -47,17 +50,16 @@ const ImageGallery: React.FC = () => {
   };
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-transparent">
       <div className="max-w-7xl mx-auto">
         <h2 className="font-pixel text-yellow-400 text-2xl sm:text-3xl md:text-4xl text-center mb-12">
           MEMES
         </h2>
+
+        {/* Masonry grid (requires CSS in index.css, see note below) */}
         <div className="masonry-grid">
           {images.map((src, index) => (
-            <div
-              key={index}
-              className="masonry-item group relative"
-            >
+            <div key={index} className="masonry-item group relative">
               <img
                 src={src}
                 alt={`Jelly meme ${index + 1}`}
