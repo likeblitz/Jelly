@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .font-pixel {
+    font-family: 'Press Start 2P', monospace;
+  }
+  
+  body {
+    background-color: #000000;
+    overflow-x: hidden;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #facc15;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #eab308;
+  }
+}
+
+@layer components {
+  .btn-pixel {
+    @apply font-pixel border-2 px-4 py-2 transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+  
+  .btn-primary {
+    @apply bg-yellow-400 text-black border-yellow-400 hover:bg-yellow-300 hover:border-yellow-300;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-black;
+  }
+
+  .masonry-grid {
+    column-count: 2;
+    column-gap: 8px;
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  @media (min-width: 640px) {
+    .masonry-grid {
+      column-count: 3;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .masonry-grid {
+      column-count: 4;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .masonry-grid {
+      column-count: 5;
+    }
+  }
+}
+
+/* Jelly Button Styles */
+.jelly-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.jelly-text {
+  background: url('/wSQFSPb.gif') repeat;
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: jelly-animate 3s infinite;
+}
+
+/* Fallback for browsers that don't support background-clip: text */
+@supports not (-webkit-background-clip: text) {
+  .jelly-text {
+    color: #facc15;
+    background: none;
+  }
+}
+
+@keyframes jelly-animate {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Floating background elements */
+.floating-banana {
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.3));
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.floating-banana:nth-child(odd) {
+  animation-name: float;
+}
+
+/* Enhanced hover effects */
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(250, 204, 21, 0.6);
+}
+
+/* Progress bar animations */
+@keyframes progress-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress-width);
+  }
+}
