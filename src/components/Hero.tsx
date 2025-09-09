@@ -53,9 +53,17 @@ const Hero: React.FC = () => {
   const totalClicks = bananaClicks;
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section
+      className="
+        min-h-screen
+        bg-transparent                  /* CHANGED: remove local gradient to avoid seams */
+        flex items-center justify-center
+        px-4 sm:px-6 lg:px-8
+        relative overflow-visible       /* CHANGED: prevent clipping of floating elements */
+      "
+    >
       {/* Floating Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-visible pointer-events-none">
         <div className="floating-banana absolute top-20 left-10 text-4xl animate-bounce">🍌</div>
         <div className="floating-banana absolute top-40 right-20 text-3xl animate-pulse">🥜</div>
         <div className="floating-banana absolute bottom-32 left-20 text-5xl animate-bounce delay-1000">🍯</div>
