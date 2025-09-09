@@ -5,10 +5,13 @@ import ImageGallery from './components/ImageGallery';
 
 function App() {
   return (
-    <div className="min-h-screen bg-black">
+    // CHANGED: move unified gradient to the wrapper
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
       <Hero />
       <ImageGallery />
-      <footer className="py-8">
+
+      {/* CHANGED: footer background -> transparent to avoid seam */}
+      <footer className="py-8 bg-transparent">
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
             <div className="flex items-center space-x-3">
@@ -19,8 +22,10 @@ function App() {
                 rel="noopener noreferrer"
                 className="text-xl font-medium text-white hover:opacity-80 transition-opacity cursor-pointer"
               >
-                Designed By <span className="font-bold">
-                  <span className="text-orange-400">B</span><span className="text-white">laze</span>
+                Designed By{' '}
+                <span className="font-bold">
+                  <span className="text-orange-400">B</span>
+                  <span className="text-white">laze</span>
                 </span>
               </a>
               <Flame className="w-6 h-6 text-orange-400" />
