@@ -91,9 +91,18 @@ const Hero: React.FC = () => {
             <h1 className="font-pixel text-yellow-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight animate-pulse">
               IT'S PEANUT BUTTER
             </h1>
-            <h1 className="font-pixel text-yellow-300 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight mt-2 relative">
-              <span className="relative z-10">JELLY TIME</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-yellow-600 blur-lg opacity-30 animate-pulse"></div>
+
+            {/* JELLY TIME with glow matching exact text width */}
+            <h1 className="font-pixel text-yellow-300 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight mt-2">
+              <span className="relative inline-block">
+                {/* Glow exactly under the text */}
+                <span
+                  aria-hidden
+                  className="absolute inset-0 rounded-md bg-gradient-to-r from-yellow-400 to-yellow-600 blur-lg opacity-30 animate-pulse"
+                  style={{ zIndex: 0 }}
+                />
+                <span className="relative z-10">JELLY TIME</span>
+              </span>
             </h1>
           </div>
           
